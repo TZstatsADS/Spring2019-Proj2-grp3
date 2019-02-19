@@ -1,12 +1,20 @@
 library(shiny)
+library(shinydashboard)
+library(googleway)
+
 
 server <- function(input,output, session){
+
   
+#CITY SUMMARY#
+  
+  
+#SEARCH RESTAURANTS#
+#drive the map of restaurants#
   data <- reactive({
     x <- df
   })
-  
-  output$mymap <- renderLeaflet({
+  output$map <- renderLeaflet({
     df <- data()
     
     m <- leaflet(data = df) %>%
@@ -19,4 +27,19 @@ server <- function(input,output, session){
                                "long", df$long))
     m
   })
+
+  
+#RESTAURANT SUMMARY#
+#drive streetview
+output$street <- renderGoogle_map({
+  google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
+})
+
+
+
+
+
+
+
+
 }
