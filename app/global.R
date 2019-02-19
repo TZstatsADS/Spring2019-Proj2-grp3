@@ -1,6 +1,10 @@
 library(shiny)
+library(shinydashboard)
+library(googleway)
 library(leaflet)
 library(dplyr)
+library(tidyr)
+library(ggplot2)
 
 #set working directory and load finaldata#
 setwd('C:/Users/mkars/Documents/GitHub/Spring2019-Proj2-grp3/app')
@@ -8,7 +12,11 @@ load(file = 'finaldata.RData')
 
 
 #CITY SUMMARY data processing#
-
+smry_trends <-
+  finaldata %>%
+  filter(!is.na(GRADE.DATE) & GRADE %in% c('A', 'B', 'C')) %>%
+  group_by(GRADE.DATE, GRADE) %>%
+  summarise(CNT = n())
 
 #SEARCH RESTAURANTS data processing#
 #create data frame to load map#
@@ -22,12 +30,6 @@ df <- finaldata %>%
 
 #RESTAURANT SUMMARY data processing#
 #create streetview#
-streetview <- data.frame(lat = -37.817714,
-                 long = 144.967260,
-                 info = "Flinders Street Station")
+streetview <- data.frame(lat = 40.7128,
+                 long = -74.0060)
 map_key <- "AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE"
-
-
-#RESTAURANT SUMMARY data processing#
-
-

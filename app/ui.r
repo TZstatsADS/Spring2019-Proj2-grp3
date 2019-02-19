@@ -1,6 +1,10 @@
 library(shiny)
 library(shinydashboard)
 library(googleway)
+library(leaflet)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 
 
 #Define UI for inspector dashboard application#
@@ -19,7 +23,10 @@ ui <- dashboardPage(
       #CITY SUMMARY#
       tabItem(
         tabName = "city",
-        fluidRow()),
+        fluidRow(
+          box(
+            title = 'Grades Over Time',
+            plotOutput("smry_trend")))),
       
       #SEARCH RESTAURANTS#
       tabItem(

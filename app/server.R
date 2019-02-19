@@ -1,22 +1,27 @@
 library(shiny)
 library(shinydashboard)
 library(googleway)
+library(leaflet)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
 
 
 server <- function(input,output, session){
 
   
 #CITY SUMMARY#
-  
-  
+output$smry_trend <- 
+  renderPlot({city_counts_graph <- (ggplot(smry_trends, aes(x = GRADE.DATE, y = CNT, group = GRADE, color = GRADE)) + 
+                geom_line())
+              city_counts_graph
+              })
+
 #SEARCH RESTAURANTS#
 #drive the map of restaurants#
-  data <- reactive({
-    x <- df
-  })
+  data <- reactive({x <- df})
   output$map <- renderLeaflet({
     df <- data()
-    
     m <- leaflet(data = df) %>%
       addTiles() %>%
       addMarkers(lng = ~as.numeric(long),
@@ -34,12 +39,6 @@ server <- function(input,output, session){
 output$street <- renderGoogle_map({
   google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
 })
-
-
-
-
-
-
 
 
 }
