@@ -1,42 +1,39 @@
 library(shiny)
-library(leaflet)
+library(shinydashboard)
+library(googleway)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
+
+#Define UI for inspector dashboard application#
+ui <- dashboardPage(
+  dashboardHeader(title = "Inspector Dashboard"),
+  #add sidebar menu options#
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("City Summary", tabName = "city", icon = icon("dashboard")),
+      menuItem("Search Restaurants", tabName = "search", icon = icon("dashboard")),
+      menuItem("Restaurant Summary", tabName = "summary", icon = icon("th")))),
   
-  # Application title
-  titlePanel("2009 Manhattan Housing Sales"),
-  
-  # Sidebar with a selector input for neighborhood
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("nbhd", label = h5("Choose a Manhattan Neighborhood"), 
-                         choices = list("all neighborhoods"=0,
-                                        "Central Harlem"=1, 
-                                        "Chelsea and Clinton"=2,
-                                        "East Harlem"=3, 
-                                        "Gramercy Park and Murray Hill"=4,
-                                        "Greenwich Village and Soho"=5, 
-                                        "Lower Manhattan"=6,
-                                        "Lower East Side"=7, 
-                                        "Upper East Side"=8, 
-                                        "Upper West Side"=9,
-                                        "Inwood and Washington Heights"=10), 
-                         selected = 0)
-      #sliderInput("p.range", label=h3("Price Range (in thousands of dollars)"),
-      #            min = 0, max = 20000, value = c(200, 10000))
-    ),
-    # Show two panels
-    mainPanel(
-      #h4(textOutput("text")),
-      h3(code(textOutput("text1"))),
-      tabsetPanel(
-        # Panel 1 has three summary plots of sales. 
-        tabPanel("Sales summary", plotOutput("distPlot")), 
-        # Panel 2 has a map display of sales' distribution
-        tabPanel("Sales map", plotOutput("distPlot1"))),
-      leafletOutput("map", width = "80%", height = "400px")
+  #content of body#
+  dashboardBody(
+    tabItems(
+      #CITY SUMMARY#
+      tabItem(
+        tabName = "city",
+        fluidRow()),
+      
+      #SEARCH RESTAURANTS#
+      tabItem(
+        tabName = "search",
+        fluidRow(
+          box(
+              title = 'Select a Restaurant',
+              leafletOutput("map")))),
+      
+      #RESTAURANT SUMMARY#
+      tabItem(
+        tabName = "summary",
+        fluidRow(
+          box(google_mapOutput("street"))))
     )
- )
-))
-
+  )
+)
