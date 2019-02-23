@@ -7,11 +7,6 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
-
 #Define UI for inspector dashboard application#
 ui <- dashboardPage(
   dashboardHeader(title = "Inspector Dashboard"),
@@ -45,31 +40,13 @@ ui <- dashboardPage(
       tabItem(
         tabName = "summary",
         fluidRow(
-<<<<<<< HEAD
-=======
-
-          
-
->>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
           box(title = "Number Of Violation",
               dygraphOutput(outputId = "timetrend1"), height = 500),
           box(title = "Category of Violation",
-<<<<<<< HEAD
               plotOutput("cat"), height = 500),
           box(dygraphOutput(outputId = "timetrend2"), height = 500),
-          box(google_mapOutput("street"), height = 500)
+          box(uiOutput(outputId = "street"), height = 500)
           ))
-      
-          
-
-=======
-              plotOutput("cat"),height = 500),
-          box(dygraphOutput(outputId = "timetrend"),height = 500),
-          box(google_mapOutput("street"))
-          ))
-      
-          
->>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
     )
   )
 )

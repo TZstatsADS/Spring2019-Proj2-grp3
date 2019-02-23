@@ -7,11 +7,8 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
-<<<<<<< HEAD
+
 server <- function(input,output){
-=======
-server <- function(input,output, session){
->>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
 
   
 #CITY SUMMARY#
@@ -54,9 +51,14 @@ output$smry_trend <-
   })
   
 #drive streetview
-output$street <- renderGoogle_map({
-  google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
-})
+  output$street <- renderUI({
+    tags$img(src = google_streetview(location = c(streetview$lat, streetview$lon),
+                                     size = c(500,500), output = "html",
+                                     key = map_key),  width = "500px", height = "500px")
+  })
+#output$street <- renderGoogle_map({
+#  google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
+#})
 
 #time series
 library(dygraphs)
@@ -70,16 +72,11 @@ output$timetrend2 <- renderDygraph({
   d1
 })
 
-<<<<<<< HEAD
-#category of violation
-output$cat <- renderPlot({
-  data_cat <- df2[df2$DBA=="MYTHAI CAFE",] #?change
-=======
+
 
 #category of violation
 output$cat <- renderPlot({
   data_cat <- df2[df2$DBA==rest[1],] #change
->>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
   data_cat <- data.frame(data_cat)
   ggplot(data_cat, aes(x=VIOLATION.DESCRIPTION, y=n.cat))+
     geom_bar(stat="identity", col="light green", fill="light green") +
@@ -87,11 +84,8 @@ output$cat <- renderPlot({
     coord_flip() 
 })
 
-<<<<<<< HEAD
 
 }
-=======
-}
 
 
->>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
+
