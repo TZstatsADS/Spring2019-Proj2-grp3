@@ -1,6 +1,10 @@
 library(shiny)
+library(shinydashboard)
+library(googleway)
 library(leaflet)
 library(dplyr)
+library(tidyr)
+library(ggplot2)
 
 #set working directory and load finaldata#
 setwd('/Users/apple/Documents/GitHub/Spring2019-Proj2-grp3/app')
@@ -8,6 +12,15 @@ load(file = 'finaldata.RData')
 
 
 #CITY SUMMARY data processing#
+<<<<<<< HEAD
+=======
+smry_trends <-
+  finaldata %>%
+  filter(!is.na(GRADE.DATE) & GRADE %in% c('A', 'B', 'C')) %>%
+  group_by(GRADE.DATE, GRADE) %>%
+  summarise(CNT = n())
+
+>>>>>>> 609ba7ff15a913468893b07f2a94017a2a3d1983
 #SEARCH RESTAURANTS data processing#
 #create data frame to load map#
 
@@ -21,6 +34,7 @@ df <- finaldata %>%
 
 #RESTAURANT SUMMARY data processing#
 #create streetview#
+<<<<<<< HEAD
 streetview <- data.frame(lat = -37.817714,
                  long = 144.967260,
                  info = "Flinders Street Station")
@@ -58,3 +72,8 @@ df1$VIOLATION.DESCRIPTION[which(df1$VIOLATION.CODE=="99")]<- "99-Other General V
 
 ## 2. violation category
 df2 <- df1 %>% group_by(DBA, VIOLATION.CODE,VIOLATION.DESCRIPTION) %>% summarise(n.cat=n())
+=======
+streetview <- data.frame(lat = 40.7128,
+                 long = -74.0060)
+map_key <- "AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE"
+>>>>>>> 609ba7ff15a913468893b07f2a94017a2a3d1983

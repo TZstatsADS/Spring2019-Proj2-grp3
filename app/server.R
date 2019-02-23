@@ -1,22 +1,31 @@
 library(shiny)
 library(shinydashboard)
 library(googleway)
+<<<<<<< HEAD
 #ls("package:shiny", pattern="Output$")
+=======
+library(leaflet)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+>>>>>>> 609ba7ff15a913468893b07f2a94017a2a3d1983
 
 server <- function(input,output, session){
 
   
 #CITY SUMMARY#
-  
-  
+output$smry_trend <- 
+  renderPlot({city_counts_graph <- (ggplot(smry_trends, aes(x = GRADE.DATE, y = CNT, group = GRADE, color = GRADE)) + 
+                geom_line())
+              city_counts_graph
+              })
+
 #SEARCH RESTAURANTS#
 #drive the map of restaurants#
-  data <- reactive({
-    x <- df
-  })
+  data <- reactive({x <- df})
   output$map <- renderLeaflet({
     df <- data()
-    
     m <- leaflet(data = df) %>%
       addTiles() %>%
       addMarkers(lng = ~as.numeric(long),
@@ -57,11 +66,5 @@ output$cat <- renderPlot({
     labs(x="Number of violation", y="Violation Description",  title="Category of Violation") +
     coord_flip() 
 })
-
-
-
-
-
-
 
 }
