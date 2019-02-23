@@ -1,19 +1,11 @@
 library(shiny)
 library(shinydashboard)
 library(googleway)
-<<<<<<< HEAD
 library(xts)
-=======
-<<<<<<< HEAD
-#ls("package:shiny", pattern="Output$")
-=======
 library(leaflet)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
->>>>>>> e316b3677093971e6ba1bf3660ed0e4a6e78a533
-
->>>>>>> 609ba7ff15a913468893b07f2a94017a2a3d1983
 
 server <- function(input,output, session){
 
@@ -60,14 +52,13 @@ output$smry_trend <-
 output$street <- renderGoogle_map({
   google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
 })
-<<<<<<< HEAD
+
 #time series
 library(dygraphs)
 output$timetrend <- renderDygraph({
   scores <- subset(score,select=c(DBA,INSPECTION.YEAR,INSPECTION.MONTH,score))
   data <- scores[scores$DBA=="ROMA PIZZA",]
   dataxts <- xts(data$score, as.Date(paste0(data$INSPECTION.YEAR,"-",data$INSPECTION.MONTH,"-01")))
- # d1 <- dygraph(dataxts) %>% dyHighlight(highlightSeriesBackgroundAlpha = 0.2)
   d1<-dygraph(dataxts, main = "SCORES") %>% 
     dySeries("V1", label = "scores") %>%
     dyLegend(show = "follow")
@@ -75,21 +66,16 @@ output$timetrend <- renderDygraph({
 })
 
 
-
-
-
-
-=======
-
 #category of violation
 output$cat <- renderPlot({
-  data_cat <- df2[df2$DBA==rest[1],] #?change
+  data_cat <- df2[df2$DBA==rest[1],] #change
   data_cat <- data.frame(data_cat)
   ggplot(data_cat, aes(x=VIOLATION.DESCRIPTION, y=n.cat))+
     geom_bar(stat="identity", col="light green", fill="light green") +
     labs(x="Number of violation", y="Violation Description",  title="Category of Violation") +
     coord_flip() 
 })
->>>>>>> e316b3677093971e6ba1bf3660ed0e4a6e78a533
 
 }
+
+

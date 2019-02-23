@@ -1,15 +1,12 @@
 library(shiny)
 library(shinydashboard)
 library(googleway)
-<<<<<<< HEAD
 library(dygraphs)
-=======
 library(leaflet)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
 
->>>>>>> e316b3677093971e6ba1bf3660ed0e4a6e78a533
 
 #Define UI for inspector dashboard application#
 ui <- dashboardPage(
@@ -44,20 +41,19 @@ ui <- dashboardPage(
       tabItem(
         tabName = "summary",
         fluidRow(
-<<<<<<< HEAD
-          dygraphOutput(outputId = "timetrend")))
-=======
+
+          
+
           box(title = "Number Of Violation",
               dygraphOutput(outputId = "timetrend"), height = 500),
           
           box(title = "Category of Violation",
-              plotOutput("cat")),
-          
+              plotOutput("cat"),height = 500),
+          box(dygraphOutput(outputId = "timetrend"),height = 500),
           box(google_mapOutput("street"))
           ))
       
           
->>>>>>> e316b3677093971e6ba1bf3660ed0e4a6e78a533
     )
   )
 )
