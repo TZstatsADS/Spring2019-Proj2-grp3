@@ -3,7 +3,7 @@ library(leaflet)
 library(dplyr)
 
 #set working directory and load finaldata#
-setwd('C:/Users/mkars/Documents/GitHub/Spring2019-Proj2-grp3/app')
+setwd('C:/Users/lenovo/Documents/GitHub/Spring2019-Proj2-grp3/app')
 load(file = 'finaldata.RData')
 
 
@@ -29,5 +29,9 @@ map_key <- "AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE"
 
 
 #RESTAURANT SUMMARY data processing#
+score <-  finaldata %>%
+  filter(!is.na(SCORE)) %>%
+  group_by(DBA, INSPECTION.YEAR, INSPECTION.MONTH, lat, long) %>%
+  summarise(score = mean(SCORE))
 
 

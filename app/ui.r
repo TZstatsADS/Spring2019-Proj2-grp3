@@ -1,7 +1,7 @@
 library(shiny)
 library(shinydashboard)
 library(googleway)
-
+library(dygraphs)
 
 #Define UI for inspector dashboard application#
 ui <- dashboardPage(
@@ -33,7 +33,7 @@ ui <- dashboardPage(
       tabItem(
         tabName = "summary",
         fluidRow(
-          box(google_mapOutput("street"))))
+          dygraphOutput(outputId = "timetrend")))
     )
   )
 )
