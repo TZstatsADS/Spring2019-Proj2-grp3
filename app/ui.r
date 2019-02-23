@@ -45,8 +45,18 @@ ui <- dashboardPage(
           box(title = "Category of Violation",
               plotOutput("cat"), height = 500),
           box(dygraphOutput(outputId = "timetrend2"), height = 500),
+<<<<<<< HEAD
           box(uiOutput(outputId = "street"), height = 500)
           ))
+=======
+          box(uiOutput(outputId = "street"),height = 500)
+          ))
+      
+          
+      
+          
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
+>>>>>>> 9a66485ace573c22ac5838c1f68ecb8e6d217418
     )
   )
 )

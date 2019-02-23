@@ -51,6 +51,7 @@ output$smry_trend <-
   })
   
 #drive streetview
+<<<<<<< HEAD
   output$street <- renderUI({
     tags$img(src = google_streetview(location = c(streetview$lat, streetview$lon),
                                      size = c(500,500), output = "html",
@@ -59,6 +60,11 @@ output$smry_trend <-
 #output$street <- renderGoogle_map({
 #  google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
 #})
+=======
+output$street <- renderUI({
+  tags$img(src = google_streetview(location = c(streetview$lat, streetview$lon), key = map_key, output = "html",size = c(500,500)), width = "500px", height ="500px")
+})
+>>>>>>> 9a66485ace573c22ac5838c1f68ecb8e6d217418
 
 #time series
 library(dygraphs)
@@ -73,10 +79,19 @@ output$timetrend2 <- renderDygraph({
 })
 
 
+<<<<<<< HEAD
 
 #category of violation
 output$cat <- renderPlot({
   data_cat <- df2[df2$DBA==rest[1],] #change
+=======
+
+
+#category of violation
+output$cat <- renderPlot({
+  data_cat <- df2[df2$DBA=="ROMA PIZZA",] #change
+
+>>>>>>> 9a66485ace573c22ac5838c1f68ecb8e6d217418
   data_cat <- data.frame(data_cat)
   ggplot(data_cat, aes(x=VIOLATION.DESCRIPTION, y=n.cat))+
     geom_bar(stat="identity", col="light green", fill="light green") +
@@ -85,7 +100,15 @@ output$cat <- renderPlot({
 })
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a66485ace573c22ac5838c1f68ecb8e6d217418
 }
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9a66485ace573c22ac5838c1f68ecb8e6d217418
