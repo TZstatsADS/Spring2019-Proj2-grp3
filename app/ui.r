@@ -33,7 +33,16 @@ ui <- dashboardPage(
       tabItem(
         tabName = "summary",
         fluidRow(
-          box(google_mapOutput("street"))))
+          box(title = "Number Of Violation",
+              dygraphOutput(outputId = "timetrend"), height = 500),
+          
+          box(title = "Category of Violation",
+              plotOutput("cat")),
+          
+          box(google_mapOutput("street"))
+          ))
+      
+          
     )
   )
 )
