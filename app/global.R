@@ -8,18 +8,31 @@ library(ggplot2)
 
 #set working directory and load finaldata#
 
+<<<<<<< HEAD
 setwd('/Users/apple/Documents/GitHub/Spring2019-Proj2-grp3/app')
+=======
+setwd('C:/Users/lenovo/Documents/GitHub/Spring2019-Proj2-grp3/app')
+
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
 load(file = 'finaldata.RData')
 
 
 #CITY SUMMARY data processing#
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
 smry_trends <-
   finaldata %>%
   filter(!is.na(GRADE.DATE) & GRADE %in% c('A', 'B', 'C')) %>%
   group_by(GRADE.DATE, GRADE) %>%
   summarise(CNT = n())
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
 #SEARCH RESTAURANTS data processing#
 #create data frame to load map#
 

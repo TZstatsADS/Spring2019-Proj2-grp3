@@ -7,7 +7,11 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
+<<<<<<< HEAD
 server <- function(input,output){
+=======
+server <- function(input,output, session){
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
 
   
 #CITY SUMMARY#
@@ -60,16 +64,22 @@ output$timetrend2 <- renderDygraph({
   scores <- subset(score,select=c(DBA,INSPECTION.YEAR,INSPECTION.MONTH,score))
   data <- scores[scores$DBA=="ROMA PIZZA",]
   dataxts <- xts(data$score, as.Date(paste0(data$INSPECTION.YEAR,"-",data$INSPECTION.MONTH,"-01")))
- # d1 <- dygraph(dataxts) %>% dyHighlight(highlightSeriesBackgroundAlpha = 0.2)
   d1<-dygraph(dataxts, main = "SCORES") %>% 
     dySeries("V1", label = "scores") %>%
     dyLegend(show = "follow")
   d1
 })
 
+<<<<<<< HEAD
 #category of violation
 output$cat <- renderPlot({
   data_cat <- df2[df2$DBA=="MYTHAI CAFE",] #?change
+=======
+
+#category of violation
+output$cat <- renderPlot({
+  data_cat <- df2[df2$DBA==rest[1],] #change
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
   data_cat <- data.frame(data_cat)
   ggplot(data_cat, aes(x=VIOLATION.DESCRIPTION, y=n.cat))+
     geom_bar(stat="identity", col="light green", fill="light green") +
@@ -77,5 +87,11 @@ output$cat <- renderPlot({
     coord_flip() 
 })
 
+<<<<<<< HEAD
 
 }
+=======
+}
+
+
+>>>>>>> edfeea97dabb4cb9ab78c6dc5a51d719b234d066
