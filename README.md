@@ -1,10 +1,8 @@
-# Project 2: Shiny App Development Version 2.0
+# Project 2: New York City Restaurant Inspector Dashboard
 
 ### [Project Description](doc/project2_desc.md)
 
-![screenshot](doc/screenshot2.png)
 
-In this second project of GR5243 Applied Data Science, we develop a version 2.0 of an *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using [NYC Open Data](https://opendata.cityofnewyork.us/) or U.S. government open data released on the [data.gov](https://data.gov/) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
 
 The **learning goals** for this project is:
 
@@ -15,33 +13,28 @@ The **learning goals** for this project is:
 - systems development/design life cycle
 - shiny app/shiny server
 
-*The above general statement about project 2 can be removed once you are finished with your project. It is optional.
 
-## Project Title Lorem ipsum dolor sit amet
+## New York City Restaurant Inspector Dashboard
 Term: Spring 2019
 
-+ Team #
-+ **Projec title**: + Team members
-	+ team member 1
-	+ team member 2
-	+ team member 3
-	+ team member 4
-	+ team member 5
++ Team 3
++ **New York City Restaurant Inspector Dashboard**: 
+	+ Max Karsok
+	+ Qiaozhen Ma
+	+ Yu Shen
+	+ Matthew Vitha
 
-+ **Project summary**: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
++ **Project summary**: 
+In the third page, we focus on one specific restaurant. What we did is visualizing the time trend of its violation and grades over years, summarizing the total number of different catagories of violations and presenting its streetview.
 
-+ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
+![screenshot]()
 
-Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
+In this second project of GR5243 Applied Data Science, we develop a version 2.0 of an *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using [NYC Open Data](https://opendata.cityofnewyork.us/) or U.S. government open data released on the [data.gov](https://data.gov/) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
 
-```
-proj/
-├── app/
-├── lib/
-├── data/
-├── doc/
-└── output/
-```
++ **Contribution statement**: Project2 Group3
 
-Please see each subfolder for a README file.
+Team members: Max Karsok, Qiaozhen Ma, Yu Shen, Matthew Vitha
 
+Summary: In this project, we developed a new method and improved the classification accuracy for images of cats and dogs to 99.9%
+
+[Contribution Statement] Max Karsok designs the first page. Matthew Vitha is responsible for dynamic map of New York city's restaurant. Qiaozhen Ma and Yu Shen summarize the information of each restaurant. All team members contribute to the GitHub repository and prepare the presentation. 
