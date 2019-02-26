@@ -80,13 +80,13 @@ ui <- dashboardPage(
       tabItem(
         tabName = "summary",
         fluidRow(
-          h1(verbatimTextOutput("value")),
-          box(title = "Number Of Violation",
-              dygraphOutput(outputId = "timetrend1"), height = 500),
-          box(title = "Category of Violation",
-              plotOutput("cat"), height = 500),
-          box(dygraphOutput(outputId = "timetrend2"), height = 500),
-          box(uiOutput(outputId = "street"), height = 500)
+          tabsetPanel(
+            type = "tabs",
+            tabPanel("Number Of Violation", dygraphOutput(outputId = "timetrend1")),
+            tabPanel("Category of Violation", plotOutput("cat")),
+            tabPanel("Scores", dygraphOutput(outputId = "timetrend2")),
+            tabPanel("Streetview", uiOutput(outputId = "street"))
+          )
           ))
     )
   )
