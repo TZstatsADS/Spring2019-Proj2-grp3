@@ -12,7 +12,7 @@ library(dygraphs)
 library(ggmap)
 
 #set working directory and load finaldata#
-setwd('/Users/apple/Documents/GitHub/Spring2019-Proj2-grp3/Spring2019-Proj2-grp3/app')
+#setwd('/Users/apple/Documents/GitHub/Spring2019-Proj2-grp3/Spring2019-Proj2-grp3/app')
 #load restaurant violation data#
 load(file = 'finaldata.RData')
 finaldata$zip <- str_sub(finaldata$ADDRESSS, start = -5)
