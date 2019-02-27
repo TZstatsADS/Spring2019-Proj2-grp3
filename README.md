@@ -26,6 +26,8 @@ Term: Spring 2019
 
 + **Project summary**: Our team created a Shiny Dashboard App using NYC Restaurant Inspection data in efforts to analyze restaurants' histories of health violations. The dashboard is designed to assist Restaurant Inspectors in making easier and wiser inspection decisions. The dashboard can also be used by NYC restaurant patrons interested in observing inspection data trends for restaurants across the five Boroughs of NYC. There are 3 tabs in total. In the first tab named City Summary, the user can analyze Restaurant Inspection statistics on an aggregate level to gain a holistic view into the state of health insepections in NYC. In the second tab named Search Restaurants, the user can search for restaurants using an interactive map, filtering the number of restaurnts down based on which borough the restaurant is in, and which cuisine the restaurant features. Once the user has chosen a restaurant he or she wishes wants to further inspect based on the first two tabs, the user can access restaurant-specific information in the third tab named Restaurant Summary.
 
++ **Link**:https://maxkarsok.shinyapps.io/NYCRestaurantInspectorDashboard/
+
 ![screenshot](doc/Tab1.png)
 ![screenshot](doc/Tab2.png)
 ![screenshot](doc/Tab3.png)
