@@ -129,6 +129,5 @@ server <- function(input,output){
       labs(x="Number of violation", y="Violation Description",  title="Category of Violation") +
       coord_flip() 
   })
-  #
   
 }
