@@ -40,9 +40,9 @@ server <- function(input,output){
     
   })
   
-  #filter data by boros
+  #filter data by boros and cuisine
   datafiltered <- reactive({
-    df[which(df$BORO == input$boroselected), ] # Filter by boro
+    df[which(df$BORO == input$boroselected & df$CUISINE.DESCRIPTION == input$cuisineselected), ] # Filter by boro
     
   })
   
@@ -53,31 +53,11 @@ server <- function(input,output){
       clearMarkers() %>%   ## clear previous markers
       addMarkers(lng = ~as.numeric(long),
                  lat = ~as.numeric(lat),
-                 popup = paste("Restaurant Name: ", df$DBA,
+                 popup = paste("Restaurant Name: ", datafiltered()$DBA,
                                "<br>",
-                               "Borough: ", df$BORO,
+                               "Borough: ", datafiltered()$BORO,
                                "<br>",
-                               "Cuisine Type: ",df$CUISINE.DESCRIPTION))
-  })
-  
-  
-  #filter data by cuisine
-  datafiltered_c <- reactive({
-    df[which(df$CUISINE.DESCRIPTION == input$cuisineselected), ] # Filter by cuisine
-    
-  })
-  
-  ## respond to the filtered data
-  observe({
-    
-    leafletProxy(mapId = "map", data = datafiltered_c()) %>%
-      clearMarkers() %>%   ## clear previous markers
-      addMarkers(lng = ~as.numeric(long),
-                 lat = ~as.numeric(lat),
-                 popup = paste("DBA", df$DBA,
-                               "BORO", df$BORO,
-                               "lat", df$lat,
-                               "long", df$long))
+                               "Cuisine Type: ", datafiltered()$CUISINE.DESCRIPTION))
   })
   
   
