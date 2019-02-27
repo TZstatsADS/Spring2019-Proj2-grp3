@@ -5,8 +5,8 @@ account: maxkarsok
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 743538
-bundleId: 1904182
+bundleId: 1904400
 url: https://maxkarsok.shinyapps.io/NYCRestaurantInspectorDashboard/
-when: 1551291634.44152
+when: 1551296597.5988
 asMultiple: FALSE
 asStatic: FALSE

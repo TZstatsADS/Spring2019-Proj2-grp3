@@ -47,8 +47,7 @@ smry_scatter <-
   finaldata %>%
   filter(BORO != 'Missing') %>%
   group_by(BORO) %>%
-  summarise(Inspections = n(),
-            Avg_Score = mean(!is.na(SCORE)))
+  summarise(Inspections = n())
 
 #create zip heat map data#
 shape <- st_read(dsn = "ZIP_CODE_040114.shp")
@@ -57,7 +56,7 @@ smry_map <-
   filter(!is.na(zip)) %>%
   group_by(zip) %>%
   summarise(InfractionsPerRestaurant = (n() / n_distinct(DBA)))
-colnames(smry_map) <- c('ZIPCODE', 'InfractionsPerRestaurant')
+colnames(smry_map) <- c('ZIPCODE', 'ViolationsPerRestaurant')
 smry_map$ZIPCODE <- as.factor(smry_map$ZIPCODE)
 shape <- inner_join(shape, smry_map, by = 'ZIPCODE')
 

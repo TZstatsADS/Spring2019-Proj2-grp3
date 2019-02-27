@@ -24,16 +24,14 @@ dashboardPage(
             but could be used by consumers to look for the cleanest of restaurants. The first two dashboards
             examine the entire city, while the final two dashboards analyze a particular restaurant in question.",
             (smry_stats01), 
-            "insepections are included in this report, with an average inspection score of ",
-            (smry_stats02),
-            ".", 
+            "insepections are included in this report.",
             height = "20vh")),
         fluidRow(
           column(width = 5,
               fluidRow(column(12,
                box(
                 width = 12,
-                title = 'Inspections by Borough',
+                title = 'Inspections per Borough',
                 plotOutput("smry_scatter", height = '22vh'),
                 height = "30vh"))),
               fluidRow(column(12,
@@ -44,7 +42,7 @@ dashboardPage(
                   height = "30vh")))),
           column(width = 7,
               box(
-                  title = 'Avg. Inspections per Restaurant (by Zip Code)',
+                  title = 'Avg. # Violations per Restaurant (by Zip Code)',
                   width = 12,
                   leafletOutput("zip_infractions", height = "56vh"))))),
       #SEARCH RESTAURANTS#

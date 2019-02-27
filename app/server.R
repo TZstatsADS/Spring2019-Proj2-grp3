@@ -16,7 +16,7 @@ server <- function(input,output){
   
   output$zip_infractions <- 
     renderLeaflet({tm <- tm_shape(shape) +
-                         tm_polygons('InfractionsPerRestaurant', id = 'ZIPCODE')
+                         tm_polygons('ViolationsPerRestaurant', id = 'ZIPCODE')
                          tmap_mode("view")
                          tmap_last()
             tmap_leaflet(tm)})
@@ -113,8 +113,7 @@ server <- function(input,output){
     data <- scores[scores$DBA==input$rest_name,]
     dataxts <- xts(data$score, as.Date(paste0(data$INSPECTION.YEAR,"-",data$INSPECTION.MONTH,"-01")))
     d1<-dygraph(dataxts, main = "SCORES") %>% 
-      dySeries("V1", label = "scores") %>%
-      dyLegend(show = "follow")
+      dySeries("V1", label = "scores")
     d1
   })
   
