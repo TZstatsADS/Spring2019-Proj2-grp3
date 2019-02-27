@@ -14,9 +14,9 @@ library(tmap)
 library(tmaptools)
 library(sf)
 library(xts)
+library(rsconnect)
 
 #set working directory and load finaldata#
-setwd('C:/Users/mkars/Documents/GitHub/Spring2019-Proj2-grp3/app')
 #load restaurant violation data#
 load(file = 'finaldata.RData')
 finaldata$zip <- str_sub(finaldata$ADDRESSS, start = -5)

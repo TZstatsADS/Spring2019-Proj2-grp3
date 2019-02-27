@@ -27,26 +27,26 @@ dashboardPage(
             "insepections are included in this report, with an average inspection score of ",
             (smry_stats02),
             ".", 
-            height = "15vh")),
+            height = "20vh")),
         fluidRow(
           column(width = 5,
               fluidRow(column(12,
                box(
                 width = 12,
                 title = 'Inspections by Borough',
-                plotOutput("smry_scatter", height = '25vh'),
-                height = "33vh"))),
+                plotOutput("smry_scatter", height = '22vh'),
+                height = "30vh"))),
               fluidRow(column(12,
                 box(
                   width = 12,
                   title = 'Grades Over Time',
-                  plotOutput("smry_trend", height = '28vh'),
-                  height = "36vh")))),
+                  plotOutput("smry_trend", height = '22vh'),
+                  height = "30vh")))),
           column(width = 7,
               box(
                   title = 'Avg. Inspections per Restaurant (by Zip Code)',
                   width = 12,
-                  leafletOutput("zip_infractions", height = "65vh"))))),
+                  leafletOutput("zip_infractions", height = "56vh"))))),
       #SEARCH RESTAURANTS#
       tabItem(
         tabName = "search",
@@ -76,15 +76,12 @@ dashboardPage(
           leafletOutput("map", height = '65vh')))),
 
         #RESTAURANT SUMMARY#
-        tabItem(
-          tabName = "summary",
-          fluidRow(
-            h1(verbatimTextOutput("value"), height = '10vh'),
-            box(title = "Number Of Violation",
-                height = '38vh',
-                dygraphOutput(outputId = "timetrend1", height = '32vh')),
-            box(title = "Category of Violation",
-                plotOutput("cat", height = '32vh'), height = '38vh'),
-            box(dygraphOutput(outputId = "timetrend2", height = '32vh'), height = '38vh'),
-            box(htmlOutput(outputId = "street"), height = '38vh')))
-)))
+      tabItem(
+        tabName = 'summary',
+      tabsetPanel(
+        type = "tabs",
+        tabPanel("Number Of Violation", dygraphOutput(outputId = "timetrend1")),
+        tabPanel("Category of Violation", plotOutput("cat")),
+        tabPanel("Scores", dygraphOutput(outputId = "timetrend2")),
+        tabPanel("Streetview", uiOutput(outputId = "street")))))
+))

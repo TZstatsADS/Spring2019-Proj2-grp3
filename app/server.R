@@ -100,8 +100,8 @@ server <- function(input,output){
   output$street <- renderUI({
     rest_str_view <- as.numeric(unlist(streetview[streetview$DBA==input$rest_name,]))[-1]
     tags$img(src = google_streetview(location = c(rest_str_view[1], rest_str_view[2]),
-                                     size = c(445,325), output = "html",
-                                     key = map_key),  width = 445, height = 325)
+                                     size = c(600,600), output = "html",
+                                     key = map_key),  width = 600, height = 600)
   })
   #output$street <- renderGoogle_map({
   #  google_map(location = c(streetview$lat, streetview$lon), key = map_key, search_box = T)
