@@ -13,14 +13,14 @@ library(ggmap)
 library(tmap)
 library(tmaptools)
 library(sf)
-library(plotly)
 library(xts)
 
 #set working directory and load finaldata#
-setwd('C:/Users/mkarsok/Downloads/5243')
+setwd('C:/Users/mkars/Documents/GitHub/Spring2019-Proj2-grp3/app')
 #load restaurant violation data#
 load(file = 'finaldata.RData')
 finaldata$zip <- str_sub(finaldata$ADDRESSS, start = -5)
+finaldata$mmyy <- paste(finaldata$INSPECTION.MONTH,finaldata$INSPECTION.YEAR, sep = "-01-")
 #load official zip code record data#
 data(zipcode)
 zipcode <- zipcode %>% filter(state == 'NY')
@@ -37,10 +37,11 @@ smry_trends <-
   finaldata %>%
   filter(!is.na(GRADE.DATE) & GRADE %in% c('A', 'B', 'C') & 
   INSPECTION.YEAR %in% c(2013,2014,2015,2016)) %>%
-  group_by(paste(INSPECTION.MONTH,INSPECTION.YEAR, sep = "-01-"), GRADE) %>%
+  group_by(mmyy, GRADE) %>%
   summarise(CNT = n())
 colnames(smry_trends) <- c('date', 'GRADE', 'CNT')
 smry_trends$date <- as.Date(smry_trends$date, '%m-%d-%Y')
+smry_trends <- as.data.frame(smry_trends)
 #create data for zip counts#
 smry_scatter <-       
   finaldata %>%
