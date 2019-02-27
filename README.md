@@ -24,9 +24,11 @@ Term: Spring 2019
 	+ Yu Shen
 	+ Matthew Vitha
 
-+ **Project summary**: From the angle of restaurant inspectors, we creat a Shiny Dashboard to present history violation information of restaurants in NYC so that the inspectors can make an easier and wiser inspection decision. There are 3 tabs in tatal. In the first tab, named City Summary, we analyze Restaurant Inspections on an aggregate level. After having an ovrall view of the city, we then move on to the second tab named Search Restaurants. In this tab, we can search for restaurants across the five Boroughs and for the restaurants featuring different Cuisines. At last, once you have chosen a restaurant you want to inspect, you will have all useful information in the third tab named Restaurant Summary.
++ **Project summary**: From the angle of restaurant inspectors, we creat a Shiny Dashboard to present history violation information of restaurants in NYC so that the inspectors can make an easier and wiser inspection decision. There are 3 tabs in total. In the first tab named City Summary, we analyze Restaurant Inspections on an aggregate level. After having an ovrall view of the city, then we move on to the second tab named Search Restaurants. In this tab, we can search for restaurants across the five Boroughs and for the restaurants featuring different Cuisines. At last, once you have chosen a restaurant you want to inspect, you will have all useful information in the third tab named Restaurant Summary.
 
-![screenshot]()
+![screenshot](doc/Tab1.png)
+![screenshot](doc/Tab2.png)
+![screenshot](doc/Tab3.png)
 
 + **Contribution statement**: Project2 Group3
 
