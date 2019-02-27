@@ -10,9 +10,14 @@ library(zipcode)
 library(stringr)
 library(dygraphs)
 library(ggmap)
+library(tmap)
+library(tmaptools)
+library(sf)
+library(plotly)
+library(xts)
 
 #set working directory and load finaldata#
-setwd('C:/Users/mkars/Downloads/5243')
+setwd('C:/Users/mkarsok/Downloads/5243')
 #load restaurant violation data#
 load(file = 'finaldata.RData')
 finaldata$zip <- str_sub(finaldata$ADDRESSS, start = -5)
@@ -30,43 +35,42 @@ smry_stats02 <- round(mean(!is.na(finaldata$SCORE)),3)
 #create data for trend line#
 smry_trends <-
   finaldata %>%
-  filter(!is.na(GRADE.DATE) & GRADE %in% c('A', 'B', 'C')) %>%
-  group_by(GRADE.DATE, GRADE) %>%
+  filter(!is.na(GRADE.DATE) & GRADE %in% c('A', 'B', 'C') & 
+  INSPECTION.YEAR %in% c(2013,2014,2015,2016)) %>%
+  group_by(paste(INSPECTION.MONTH,INSPECTION.YEAR, sep = "-01-"), GRADE) %>%
   summarise(CNT = n())
+colnames(smry_trends) <- c('date', 'GRADE', 'CNT')
+smry_trends$date <- as.Date(smry_trends$date, '%m-%d-%Y')
 #create data for zip counts#
-smry_zips <-       
+smry_scatter <-       
+  finaldata %>%
+  filter(BORO != 'Missing') %>%
+  group_by(BORO) %>%
+  summarise(Inspections = n(),
+            Avg_Score = mean(!is.na(SCORE)))
+
+#create zip heat map data#
+shape <- st_read(dsn = "ZIP_CODE_040114.shp")
+smry_map <-       
   finaldata %>%
   filter(!is.na(zip)) %>%
   group_by(zip) %>%
-  summarise(cnt = n()) %>%
-  top_n(10, cnt)
-#create data for summary map#
-smry_maps <- 
-  finaldata %>%
-  filter(!is.na(zip)) %>%
-  group_by(zip, latitude, longitude) %>%
-  summarise(cnt = n())
-register_google('AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE')
-map <- get_googlemap(location= c(lon = 40.7128, lat = -74.0060), zoom = 9)
+  summarise(InfractionsPerRestaurant = (n() / n_distinct(DBA)))
+colnames(smry_map) <- c('ZIPCODE', 'InfractionsPerRestaurant')
+smry_map$ZIPCODE <- as.factor(smry_map$ZIPCODE)
+shape <- inner_join(shape, smry_map, by = 'ZIPCODE')
+
 
 #SEARCH RESTAURANTS data processing#
 #create data frame to load map#
-
-df <- finaldata %>%
+df <- head(finaldata,5000) %>%
   filter(!is.na(lat) & !is.na(long)) %>%
-  filter(as.numeric(lat) > 40.60000 & as.numeric(lat) < 40.80000) %>%
-  filter(as.numeric(long) > -74.00000 & as.numeric(long) < -73.70000) %>%
+  filter(BORO != 'Missing') %>%
+  filter(as.numeric(lat) > 40.50000 & as.numeric(lat) < 40.86000) %>%
+  filter(as.numeric(long) > -74.05000 & as.numeric(long) < -73.85000) %>%
   group_by(DBA, BORO,CUISINE.DESCRIPTION) %>%
   dplyr::summarize(lat = max(as.numeric(lat)),
                    long = max(as.numeric(long)))
-
-#RESTAURANT SUMMARY data processing#
-#create streetview#
-
-streetview <- data.frame(lat = -37.817714,
-                 long = 144.967260,
-                 info = "Flinders Street Station")
-map_key <- "AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE"
 
 
 #RESTAURANT SUMMARY data processing#
@@ -84,7 +88,7 @@ df1 <- df1%>%filter(!is.null(DBA) & !is.na(DBA))
 
 
 df1$VIOLATION.CODE <- apply(matrix(as.character(df1$VIOLATION.CODE)),1,
-                               function(x) substring(x,1,2))
+                            function(x) substring(x,1,2))
 df1$VIOLATION.CODE <- as.numeric(df1$VIOLATION.CODE)
 df1 <- na.omit(df1)
 
@@ -107,8 +111,5 @@ df1$VIOLATION.DESCRIPTION[which(df1$VIOLATION.CODE=="99")]<- "99-Other General V
 
 ## 2. violation category
 df2 <- df1 %>% group_by(DBA, VIOLATION.CODE,VIOLATION.DESCRIPTION) %>% summarise(n.cat=n())
-
+map_key <- 'AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE'
 streetview <- finaldata %>% subset(select=c(DBA, lat, long))%>%distinct()
-
-map_key <- "AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE"
-
