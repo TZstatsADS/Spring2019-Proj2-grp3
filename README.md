@@ -24,17 +24,12 @@ Term: Spring 2019
 	+ Yu Shen
 	+ Matthew Vitha
 
-+ **Project summary**: 
-In the third page, we focus on one specific restaurant. What we did is visualizing the time trend of its violation and grades over years, summarizing the total number of different catagories of violations and presenting its streetview.
++ **Project summary**: From the angle of restaurant inspectors, we creat a Shiny Dashboard to present history violation information of restaurants in NYC so that the inspectors can make an easier and wiser inspection decision. There are 3 tabs in tatal. In the first tab, named City Summary, we analyze Restaurant Inspections on an aggregate level. After having an ovrall view of the city, we then move on to the second tab named Search Restaurants. In this tab, we can search for restaurants across the five Boroughs and for the restaurants featuring different Cuisines. At last, once you have chosen a restaurant you want to inspect, you will have all useful information in the third tab named Restaurant Summary.
 
 ![screenshot]()
-
-In this second project of GR5243 Applied Data Science, we develop a version 2.0 of an *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using [NYC Open Data](https://opendata.cityofnewyork.us/) or U.S. government open data released on the [data.gov](https://data.gov/) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
 
 + **Contribution statement**: Project2 Group3
 
 Team members: Max Karsok, Qiaozhen Ma, Yu Shen, Matthew Vitha
-
-Summary: In this project, we developed a new method and improved the classification accuracy for images of cats and dogs to 99.9%
 
 [Contribution Statement] Max Karsok designs the first page. Matthew Vitha is responsible for dynamic map of New York city's restaurant. Qiaozhen Ma and Yu Shen summarize the information of each restaurant. All team members contribute to the GitHub repository and prepare the presentation. 
