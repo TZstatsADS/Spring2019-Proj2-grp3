@@ -111,5 +111,5 @@ df1$VIOLATION.DESCRIPTION[which(df1$VIOLATION.CODE=="99")]<- "99-Other General V
 
 ## 2. violation category
 df2 <- df1 %>% group_by(DBA, VIOLATION.CODE,VIOLATION.DESCRIPTION) %>% summarise(n.cat=n())
-map_key <- 'AIzaSyBfQD4gSCEB6BJEVlC7gS7jpj-BMIZvCYE'
+map_key <- 'insert the google API key'
 streetview <- finaldata %>% subset(select=c(DBA, lat, long))%>%distinct()
